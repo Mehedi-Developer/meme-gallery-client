@@ -26,10 +26,11 @@ const Home = (props: any) => {
     // Submitting memo
     const handleFinish = async(evt?: any) => {
         // console.log({evt});
+        const d = new Date();
         const memoObj = {
             title: evt?.title,
             imageUrl: imageUrl,
-            createdAt: new Date().toLocaleDateString("en-US")
+            createdAt: `${d.getDate()} ${d.toDateString().substr(4, 3)} ${d.getFullYear()}`
         }
         const hide =  message.loading("Logging", 60);
         hide();

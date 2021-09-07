@@ -11,13 +11,18 @@ import {
 const Stats = ({memes}: any) => {
     // console.log({memes});
     const dates = [...Array(7)].map((_, i) => {
-        const d = new Date()
-        d.setDate(d.getDate() - i)
-        return new Date(d).toLocaleDateString("en-US");
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const day = d.getDate();
+        const x = d.toDateString().substr(4, 3);
+        const year = d.getFullYear();
+        const date = `${day} ${x} ${year}`;
+        return date;
+        // return new Date(d).toLocaleDateString("en-US");
     })
     // console.log({dates});
     // Sample data
-    const data: any[] = []; // { argument: '3/9/2021', value: 10 },
+    let data: any[] = []; // { argument: '3/9/2021', value: 10 },
 
     const counts: any = {};
     const sampleArray = memes?.map((memo: any) => memo?.createdAt);
@@ -32,13 +37,13 @@ const Stats = ({memes}: any) => {
         // counts[date] && data.push({argument: date, value: counts[date]});
     });
     // console.log({data});
-    
+    data = data?.reverse();
     return (
         <div style={{height: '90vh', padding: "150px"}} className="">
             <div className="d-flex justify-content-center">
                 <h3 className="text-center mb-2 border rounded p-3">Stats</h3>
             </div>
-            <p className="text-center mb-4">Memo uploaded per day last 7 days</p>
+            <p className="text-center mb-4">Meme uploaded per day last 7 days</p>
             <Paper className="my-0 p-2">
                 <Chart
                     data={data}
