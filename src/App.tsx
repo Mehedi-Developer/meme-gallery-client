@@ -29,17 +29,19 @@ function App() {
 
   useEffect(()=> {loadData();}, [""]);
   return (
-    <div className="bg-light p-3">
+    <div className={`${active && "bg-dark"} text-light p-3`}>
       <Router>
           <Switch>
             <Route exact path="/">
               {
                 active && <Home setMemes={setMemes} memes={memes} loadData={loadData}/>
               }
-              
             </Route>
+            
             <Route path="/home">
-              <Home setMemes={setMemes} memes={memes} loadData={loadData}/>
+              {
+                active && <Home setMemes={setMemes} memes={memes} loadData={loadData}/>
+              }
             </Route>
             
             <Route path='/stats'>
@@ -47,15 +49,16 @@ function App() {
                 active && <Stats memes={memes} />
               }
             </Route>
+
             <Route path='*/:page'>
               <NotFound/>
             </Route> 
           </Switch>
         </Router>
         {
-          active && <footer><p className="text-center my-3">Ⓒ Md. Mehedi Hasan Khan {new Date().getFullYear()}</p> </footer>
+          active && <footer><p style={{paddingBottom: "2px"}} className="text-center my-3">Ⓒ Md. Mehedi Hasan Khan {new Date().getFullYear()}</p> </footer>
         }
-        <ScrollToTop easing={"linear"} duration={1} showUnder={160}>
+        <ScrollToTop duration={3} showUnder={160}>
           <p className='btn btn-info text-danger font-weight-bold rounded-circle'>UP</p>
         </ScrollToTop>
     </div>

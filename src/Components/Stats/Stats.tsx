@@ -6,21 +6,22 @@ import {
   Chart,
   BarSeries,
 } from '@devexpress/dx-react-chart-material-ui';
+import { Link } from "react-router-dom";
 // import { alpha } from '@material-ui/core/styles';
 
 const Stats = ({memes}: any) => {
     // console.log({memes});
     const dates = [...Array(7)].map((_, i) => {
-        const d = new Date();
+        const d: any = new Date();
         d.setDate(d.getDate() - i);
-        const day = d.getDate();
-        const x = d.toDateString().substr(4, 3);
-        const year = d.getFullYear();
-        const date = `${day} ${x} ${year}`;
+        // const day = d.getDate();
+        // const x = d.toDateString().substr(4, 3);
+        // const year = d.getFullYear();
+        const date = `${d.getDate()} ${d.toDateString().substr(4, 3)} ${d.getFullYear()}`;
         return date;
         // return new Date(d).toLocaleDateString("en-US");
     })
-    // console.log({dates});
+    console.log({dates});
     // Sample data
     let data: any[] = []; // { argument: '3/9/2021', value: 10 },
 
@@ -39,12 +40,14 @@ const Stats = ({memes}: any) => {
     // console.log({data});
     data = data?.reverse();
     return (
-        <div style={{height: '90vh', padding: "150px"}} className="">
+        <div className="mt-2 px-3 py-5 mx-auto">
             <div className="d-flex justify-content-center">
-                <h3 className="text-center mb-2 border rounded p-3">Stats</h3>
+                <h3 className="text-light text-center mb-2 border rounded p-3">Stats</h3>
             </div>
-            <p className="text-center mb-4">Meme uploaded per day last 7 days</p>
-            <Paper className="my-0 p-2">
+            
+            <h5 className="text-center my-4"><Link className="text-decoration-non" to="/home">Go Main</Link></h5>
+            <p className="text-center mb-4"><small>Meme uploaded per day last 7 days</small></p>
+            <Paper className="my-0 p-4 text-warning rounded shadow">
                 <Chart
                     data={data}
                 >

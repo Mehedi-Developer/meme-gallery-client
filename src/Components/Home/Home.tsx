@@ -26,7 +26,7 @@ const Home = (props: any) => {
     // Submitting memo
     const handleFinish = async(evt?: any) => {
         // console.log({evt});
-        const d = new Date();
+        const d: any = new Date();
         const memoObj = {
             title: evt?.title,
             imageUrl: imageUrl,
@@ -117,13 +117,13 @@ const Home = (props: any) => {
     return (
         <div>
             <div className="d-flex justify-content-center">
-                <h1 style={{width: 'fit-content'}} className="text-center mb-5 p-3 border border-round">Meme Gallery</h1>
+                <h2 style={{width: 'fit-content'}} className="text-light text-center my-4 p-3 border border-round">Meme Gallery</h2>
             </div>
             <h5  className="text-center mb-3" >
                 <Link to="/stats">See Stats</Link>
             </h5>
             <Form
-                style={{ marginTop: 8, width: "80%" }}
+                style={{ marginTop: 8, width: "88%" }}
                 form={form}
                 id="myForm"
                 name="form"
