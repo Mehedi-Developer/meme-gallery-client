@@ -1,0 +1,50 @@
+.file_container{
+	display:grid;
+	grid-template-columns: 200px;
+	grid-template-columns: repeat(auto-fit,minmax(125px,1fr));
+	grid-column-gap: 80px;
+	grid-row-gap: 30px;
+
+	.image_wrapper, .folder_wrapper{
+		justify-self: center;
+    	align-self: center;
+		width: 200px;
+		height: 180px;
+		position: relative;
+		object-fit:scale-down;
+	}
+	.image_wrapper{
+		border: .1px solid #e6e6e6;
+
+		.delete_btn{
+			display:none;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			color: #f00;
+		}
+		&:hover{
+			// background:#ff0;
+			.delete_btn{
+				display: block;
+			}
+		}
+		.image{
+			font-size: unset;
+		}
+	}
+
+	.folder_wrapper{
+		font-size:15px;
+		.folder{
+			font-size:15px;
+		}
+		.folder_name{
+			font-size:15px;
+		}
+	}
+}
+
+.mask{
+	background-color: aquamarine;
+}
