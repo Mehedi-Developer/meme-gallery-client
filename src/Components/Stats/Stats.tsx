@@ -16,8 +16,9 @@ const Stats = ({memes}: any) => {
         d.setDate(d.getDate() - i);
         // const day = d.getDate();
         // const x = d.toDateString().substr(4, 3);
-        // const year = d.getFullYear();
-        const date = `${d.getDate()} ${d.toDateString().substr(4, 3)} ${d.getFullYear()}`;
+        // const year = d.getFullYear().toString().substr(2);
+        // console.log({year});
+        const date = `${d.getDate()} ${d.toDateString().substr(4, 3)} ${d.getFullYear().toString().substr(2)}`;
         return date;
         // return new Date(d).toLocaleDateString("en-US");
     })
@@ -26,7 +27,7 @@ const Stats = ({memes}: any) => {
     let data: any[] = []; // { argument: '3/9/2021', value: 10 },
 
     const counts: any = {};
-    const sampleArray = memes?.map((memo: any) => memo?.createdAt);
+    const sampleArray = memes?.map((meme: any) => meme?.createdAt.substr(0, (meme?.createdAt.length - 4))+meme?.createdAt.substr(meme?.createdAt.length -2));
     sampleArray.forEach(function (x: any) { counts[x] = (counts[x] || 0) + 1; });
     // console.log({counts});
     // const keys = Object.keys(counts);

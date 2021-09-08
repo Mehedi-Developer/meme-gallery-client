@@ -8,7 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import { Spin, Alert } from 'antd';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ScrollToTop from 'react-scroll-up';
@@ -30,6 +30,12 @@ function App() {
   useEffect(()=> {loadData();}, [""]);
   return (
     <div className={`${active && "bg-dark"} text-light p-3`}>
+      {
+        !active && <div style={{position:'relative', top: '250px'}} className="w-75 mx-auto text-center justify-content-center">
+            <Spin size="large" tip="Loading...">
+          </Spin>
+        </div>
+      }
       <Router>
           <Switch>
             <Route exact path="/">
